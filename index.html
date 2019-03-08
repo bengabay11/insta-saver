@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/axios/dist/axios.js"></script>
+    <script defer src="scripts/root.js"></script>
+    <script src="scripts/search-username.js"></script>
     <title>InstaSaver</title>
 </head>
 <body>
-    <div class="title">InstaSaver</div>
-    <div class="main-section">
-        <label>
-            <input type="search" class="search-username" placeholder="username" autofocus>
-        </label>
+    <div id="root">
+        <div class="title">InstaSaver</div>
+        <search-username></search-username>
     </div>
 </body>
 </html>
