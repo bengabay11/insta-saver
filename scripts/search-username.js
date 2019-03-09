@@ -16,13 +16,18 @@ Vue.component('search-username', {
                 </label>
                 <button class=search-username-button @click="getProfileData">🔍</button>
             </div>
-            <div class="profileImage" v-if="showImage">
+            <div class="profile-image" v-if="showImage">
+                <div class="username">{{username}}</div>
+                <div class="profile-image-options">
+                    <button class="save-button" @click="saveImage">💾</button>                                                                      
+                    <button class=back-button @click="back">🔙</button>                                                                                              
+                </div>
                 <img :src="imageData" alt="Profile Image is not avalible.">
             </div>
      </div>`,
 
     methods: {
-        getProfileData(){
+        getProfileData() {
             axios.get(`https://instagram.com/${this.username}?utm_source=ig_profile_share&igshid=1qdytn9yec9gd`).then((response) => {
                 let entryData = "{";
                 let index = response['data'].indexOf('"entry_data"') + 13;
@@ -54,6 +59,16 @@ Vue.component('search-username', {
                 this.imageData = address;
                 this.showImage = true;
             });
+        },
+
+        saveImage(){
+            alert("Image Saved");
+            this.back();
+        },
+
+        back(){
+            this.username  = "";
+            this.showImage = false;
         }
     }
 });
