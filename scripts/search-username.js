@@ -4,7 +4,7 @@ Vue.component('search-username', {
         return {
             username : "",
             showImage : false,
-            imageData : ""
+            imageAddress : ""
         }
     },
 
@@ -17,12 +17,12 @@ Vue.component('search-username', {
                 <button class=search-username-button @click="getProfileData">🔍</button>
             </div>
             <div class="profile-image" v-if="showImage">
-                <div class="username">{{username}}</div>
+                <div class="username">{{username}}</div>np
                 <div class="profile-image-options">
-                    <button class="save-button" @click="saveImage">💾</button>                                                                      
+                    <!--<button class="save-button" @click="saveImage">💾</button>                                                                      -->
                     <button class=back-button @click="back">🔙</button>                                                                                              
                 </div>
-                <img :src="imageData" alt="Profile Image is not avalible.">
+                <img :src="imageAddress" alt="Profile Image is not available.">
             </div>
      </div>`,
 
@@ -55,8 +55,7 @@ Vue.component('search-username', {
         getProfileImage(id){
             axios.get(`https://i.instagram.com/api/v1/users/${id}/info/`).then((response) => {
                 let profileImages = response['data']['user']['hd_profile_pic_versions']
-                let address = profileImages[profileImages.length-1]['url'];
-                this.imageData = address;
+                this.imageAddress = profileImages[profileImages.length - 1]['url'];
                 this.showImage = true;
             });
         },
