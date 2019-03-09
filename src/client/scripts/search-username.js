@@ -17,9 +17,8 @@ Vue.component('search-username', {
                 <button class=search-username-button @click="getProfileData">🔍</button>
             </div>
             <div class="profile-image" v-if="showImage">
-                <div class="username">{{username}}</div>np
+                <div class="username">{{username}}</div>
                 <div class="profile-image-options">
-                    <!--<button class="save-button" @click="saveImage">💾</button>                                                                      -->
                     <button class=back-button @click="back">🔙</button>                                                                                              
                 </div>
                 <img :src="imageAddress" alt="Profile Image is not available.">
@@ -58,11 +57,6 @@ Vue.component('search-username', {
                 this.imageAddress = profileImages[profileImages.length - 1]['url'];
                 this.showImage = true;
             });
-        },
-
-        saveImage(){
-            alert("Image Saved");
-            this.back();
         },
 
         back(){

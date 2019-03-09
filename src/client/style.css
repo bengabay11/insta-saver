@@ -38,3 +38,10 @@
 	align-items: center;
 	font-size: 1em;
 }
+
+.search-username-button {
+	margin-left: 1em;
+	font-size: 2em;
+	background: white;
+	border: white;
+}

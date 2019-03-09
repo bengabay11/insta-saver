@@ -2,7 +2,7 @@
   "name": "insta-saver",
   "version": "1.0.0",
   "dependencies": {
-    "axios": "latest",
+    "express": "^4.16.4",
     "reflect-metadata": "^0.1.13",
     "routing-controllers": "^0.7.7",
     "typescript": "^3.3.3333"
