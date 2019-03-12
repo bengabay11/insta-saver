@@ -4,6 +4,7 @@ Vue.component('search-username', {
         return {
             username : "",
             showImage : false,
+            loading : false,
             imageAddress : ""
         }
     },
@@ -12,9 +13,12 @@ Vue.component('search-username', {
         `<div class="main-section">
             <div class="search-username" v-if="!showImage">
                 <label>
-                    <input type="search" class="search-username-input" placeholder="username"  v-model="username" autofocus>
+                    <input type="search" aria-label="search" class="search-username-input special-font"
+                     placeholder="username" v-model="username" autofocus>
                 </label>
                 <button class=search-username-button @click="getProfileData">🔍</button>
+            </div>
+            <div class="loader" v-if="loading">
             </div>
             <div class="profile-image" v-if="showImage">
                 <div class="username">{{username}}</div>
@@ -27,6 +31,7 @@ Vue.component('search-username', {
 
     methods: {
         getProfileData() {
+            this.loading = true;
             axios.get(`https://instagram.com/${this.username}?utm_source=ig_profile_share&igshid=1qdytn9yec9gd`).then((response) => {
                 let entryData = "{";
                 let index = response['data'].indexOf('"entry_data"') + 13;
@@ -53,10 +58,10 @@ Vue.component('search-username', {
 
         getProfileImage(id){
             axios.get(`https://i.instagram.com/api/v1/users/${id}/info/`).then((response) => {
-                let profileImages = response['data']['user']['hd_profile_pic_versions']
+                let profileImages = response['data']['user']['hd_profile_pic_versions'];
                 this.imageAddress = profileImages[profileImages.length - 1]['url'];
-                this.showImage = true;
-            });
+                this.loading = false;
+                this.showImage = true;});
         },
 
         back(){
