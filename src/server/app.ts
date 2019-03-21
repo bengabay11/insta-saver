@@ -7,5 +7,6 @@ useExpressServer(expressApp, {
 });
 
 expressApp.use('/', express.static(config.staticFolder));
+console.log(config.staticFolder);
 console.log(`Listening on port ${config.port}...`);
 expressApp.listen(config.port);
