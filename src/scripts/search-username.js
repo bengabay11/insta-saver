@@ -13,10 +13,9 @@ Vue.component('search-username', {
         `<div class="main-section">
             <div class="search-username" v-if="!showImage">
                 <label>
-                    <input type="search" aria-label="search" class="search-username-input special-font"
-                     placeholder="username" v-model="username" autofocus>
+                    <input type="search" title="search" aria-label="search" class="search-username-input special-font"
+                     placeholder="username" v-model="username" v-on:keyup.enter="getProfileData" autofocus>
                 </label>
-                <button class=search-username-button @click="getProfileData">🔍</button>
             </div>
             <div class="loader" v-if="loading">
             </div>

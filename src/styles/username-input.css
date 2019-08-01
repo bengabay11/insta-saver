@@ -1,0 +1,10 @@
+.search-username-input {
+    width: 25em;
+    padding: 12px 10px 10px;
+    border: 1px solid #dfe1e5;
+    color: #333;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Arial, serif;
+}
